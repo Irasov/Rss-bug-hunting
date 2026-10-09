@@ -71,7 +71,17 @@ function render() {
 
       li.appendChild(span);
       li.appendChild(del);
-      list.appendChild(li);
+      if (currentFilter === 'all') {
+        list.appendChild(li);
+      } else if (currentFilter === 'done') {
+        if (li.classList.contains('done')) {
+          list.appendChild(li);
+        }
+      } else if (currentFilter === 'active') {
+        if (!li.classList.contains('done')) {
+          list.appendChild(li);
+        }
+      }
     }
   }
   updateCounter();
